@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Boyer-Moore投票算法</title>
+      <link href="/2022/08/11/Boyer-Moore%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95/"/>
+      <url>/2022/08/11/Boyer-Moore%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h4 id="多数元素"><a href="#多数元素" class="headerlink" title="多数元素"></a><a href="https://leetcode.cn/problems/majority-element/">多数元素</a></h4><p><strong>题目描述：</strong></p><p>给定一个大小为 n 的数组 nums，返回其中的多数元素。多数元素是指在数组中出现次数大于 n&#x2F;2 的元素。你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p><p><strong>测试样例：</strong></p><p>示例 1：</p><blockquote><p>输入：nums &#x3D; [3,2,3]<br>输出：3</p></blockquote><p>示例 2：</p><blockquote><p>输入：nums &#x3D; [2,2,1,1,1,2,2]<br>输出：2</p></blockquote><p><strong>题解：</strong></p><h5 id="Boyer-Moore-投票算法："><a href="#Boyer-Moore-投票算法：" class="headerlink" title="Boyer-Moore 投票算法："></a>Boyer-Moore 投票算法：</h5><ol><li>我们维护一个候选众数 candidate 和它出现的次数 count。初始时 candidate 可以为任意值，count 为 0；</li><li>我们遍历数组 nums 中的所有元素，对于每个元素 x，在判断 x 之前，如果 count 的值为 0，我们先将 x 的值赋予 candidate，随后我们判断 x：<ul><li>如果 x 与 candidate 相等，那么计数器 count 的值增加 1；</li><li>如果 x 与 candidate 不等，那么计数器 count 的值减少 1。</li></ul></li><li>在遍历完成后，candidate 即为整个数组的众数（这里众数指个数 &gt; n&#x2F;2)。</li></ol><p>这里提供一个比较好理解的证明：</p><p>首先遍历数组时，遍历到的人将有一次投票权，相同的数字代表同一个人，在投票中，所有人都是利己的，即只会给自己投支持票，给不是自己的候选人投反对票。对于第一个候选人来说，如果他不是 maj，count迟早会变为 0，因为他自己最多给自己投的票数不超过一半，而其他人都会投反对票；即使反对票全部是 maj 投的（这里是极端情况），那么以 count&#x3D;0 为分界，前面一段数组中 maj 也只占了一半，所以后面一段数组中众数还是 maj。如果第一个候选人是 maj，若 count 到最后都没有变为 0，当然选出来的就是 maj，若 count 在中间变为 0 了，那么前面一段数组中 maj 没占到一半票数，所以后面一段众数还是 maj。把前面一段丢掉不考虑，继续在后面一段中投票，可以看出是重复上述过程，所以最终候选人一定是是 maj。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> candidate = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (num == candidate)</span><br><span class="line">            count++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (--count &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                candidate = num;</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> candidate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/08/11/hello-world/"/>
+      <url>/2022/08/11/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

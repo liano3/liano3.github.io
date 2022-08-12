@@ -4,7 +4,38 @@
   
     
     <entry>
-      <title>hexo+github搭建个人博客(一)</title>
+      <title>hexo+github搭建个人博客(二)</title>
+      <link href="/2022/08/12/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+      <url>/2022/08/12/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h2 id="node-js与hexo"><a href="#node-js与hexo" class="headerlink" title="node.js与hexo"></a>node.js与hexo</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p><a href="https://nodejs.org/en/">网址在这</a>，下载左边那个版本</p><img src="image-20220812163919844.png" alt="image-20220812163919844" style="zoom:67%;" /><p>完成后双击安装，一路 next 即可（可以更改安装地址）</p><p><strong>测试：</strong></p><p>win+R 打开 cmd，输入 <code>node -v</code> 和 <code>npm -v</code>，检查版本</p><img src="image-20220812164420495.png" alt="image-20220812164420495" style="zoom:67%;" /><h3 id="修改路径"><a href="#修改路径" class="headerlink" title="修改路径"></a>修改路径</h3><p>因为如果不设置的话，安装模块的时候就会把模块装到C盘，占用C盘的空间，并且有可能安装好hexo后却无法使用，所以我们需要设置一下：</p><p>在 nodejs 文件夹中新建两个空文件夹 node_cache、node_global，</p><img src="image-20220812164913897.png" alt="image-20220812164913897" style="zoom:67%;" /><p>打开cmd，输入如下两个命令：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;E:\nodejs\node_global&quot; //根据自己地址改</span><br><span class="line">npm config set cache &quot;E:\nodejs\node_cache&quot;</span><br></pre></td></tr></table></figure><img src="image-20220812165204841.png" alt="image-20220812165204841" style="zoom:67%;" /><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>win11系统 -&gt; 我的电脑 -&gt; 右键属性 -&gt; 高级系统设置 -&gt; 环境变量</p><img src="image-20220812165702149.png" alt="image-20220812165702149" style="zoom:67%;" /><img src="image-20220812165800318.png" alt="image-20220812165800318" style="zoom:67%;" /><p>然后在系统变量中新建一个变量名为“NODE_PATH”，值为“D:\nodejs\node_global\node_modules”</p><img src="image-20220812165839664.png" alt="image-20220812165839664" style="zoom:67%;" /><p>然后编辑用户变量里的Path，将相应npm的路径改为：E:\nodejs\node_global，</p><img src="image-20220812170024835.png" alt="image-20220812170024835" style="zoom:67%;" /><p>一定要在改完后一路点确定到最后，不然保存不上</p><p><strong>测试：</strong></p><p>在 cmd 命令下执行 <code>npm install webpack -g</code>，然后 webpack 这个模块已经在我们设置默认的文件夹中了：</p><img src="image-20220812170309019.png" alt="image-20220812170309019" style="zoom:67%;" /><h3 id="创建Github-Pages"><a href="#创建Github-Pages" class="headerlink" title="创建Github Pages"></a>创建Github Pages</h3><p>Hexo就是我们的个人博客网站的框架，在安装之前，我们要先在GitHub上创立一个仓库，名字必须为<code>username.github.io</code>（如果名字里有大写字母，要变成小写）如下图：</p><img src="image-20220812170745125.png" alt="image-20220812170745125" style="zoom:67%;" /><p>仓库一定要是 public 的</p><p>然后点击 settings -&gt; pages，出现下图所示就对了</p><img src="v2-6a000b836ae32c3d118c1fdeb4696f1c_r.jpg" alt="preview" style="zoom:67%;" /><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先新建立一个文件夹 Blog（博客相关东西的本地存放点，设在你想设的位置），点开 Blog 文件夹，在该文件夹内鼠标右键打开 Git Bush Here，输入npm命令 <code>npm install -g hexo-cli</code> 安装Hexo</p><p>安装完成后，输入 <code>hexo init</code> 命令初始化博客</p><p>然后输入 <code>hexo g</code> 静态部署</p><p>这时网页已经在本地部署完成，输入 <code>hexo s</code> 命令可以查看：</p><img src="v2-11a0b4917c962bab07a48f7a04160e8b_r.jpg" alt="preview" style="zoom: 80%;" /><p>浏览器网址栏输入 <a href="http://localhost:4000/">http://localhost:4000</a> 就可以打开新部署的网页</p><p>看完后 ctr+C 停止运行服务器</p><h3 id="将-hexo-部署到-github"><a href="#将-hexo-部署到-github" class="headerlink" title="将 hexo 部署到 github"></a>将 hexo 部署到 github</h3><p>现在回到我们的 Blog 文件夹，用笔记本打开 _config.yml 文件，如下图：</p><img src="image-20220812172036226.png" alt="image-20220812172036226" style="zoom:67%;" /><p>下滑到文件底部，补全为以下内容：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/ningli03/ningli03.github.io.git  #你的仓库地址</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure><p>你的仓库地址就是下图这个：</p><img src="image-20220812172305594.png" alt="image-20220812172305594" style="zoom:67%;" /><p>然后回到 Blog 文件夹中，打开 Git Bash，安装Git部署插件，输入命令：<code>npm install hexo-deployer-git --save</code> ，然后分别输入以下三条命令：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   #清除缓存文件 db.json 和已生成的静态文件 public</span><br><span class="line">hexo g       #生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span><br><span class="line">hexo d       #自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span><br></pre></td></tr></table></figure><p>完成以后，打开浏览器，输入 <a href="https://xxx.github.io/">https://xxx.github.io</a> 就可以打开你的网页了</p><h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网页设计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 自建博客 </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+            <tag> 网页设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo+github搭建个人博客（一）</title>
       <link href="/2022/08/12/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
       <url>/2022/08/12/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
       

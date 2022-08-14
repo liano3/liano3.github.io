@@ -1336,7 +1336,7 @@ canvas:not(#ribbon-canvas),
   }
 }
 :root {
-  --global-font-size: 14px;
+  --global-font-size: 16px;
   --global-bg: #fff;
   --font-color: #4c4948;
   --hr-border: #d2ebfd;
@@ -7349,64 +7349,64 @@ h1.page-title + .tag-cloud-list {
   color: #49b1f5;
 }
 #article-container h1 {
-  padding-left: 34px;
+  padding-left: 36px;
 }
 #article-container h1:before {
+  margin-left: -30px;
+  font-size: 24px;
+}
+#article-container h1:hover {
+  padding-left: 42px;
+}
+#article-container h2 {
+  padding-left: 34px;
+}
+#article-container h2:before {
   margin-left: -28px;
   font-size: 22px;
 }
-#article-container h1:hover {
+#article-container h2:hover {
   padding-left: 40px;
 }
-#article-container h2 {
+#article-container h3 {
   padding-left: 32px;
 }
-#article-container h2:before {
+#article-container h3:before {
   margin-left: -26px;
   font-size: 20px;
 }
-#article-container h2:hover {
+#article-container h3:hover {
   padding-left: 38px;
 }
-#article-container h3 {
+#article-container h4 {
   padding-left: 30px;
 }
-#article-container h3:before {
+#article-container h4:before {
   margin-left: -24px;
   font-size: 18px;
 }
-#article-container h3:hover {
+#article-container h4:hover {
   padding-left: 36px;
 }
-#article-container h4 {
+#article-container h5 {
   padding-left: 28px;
 }
-#article-container h4:before {
+#article-container h5:before {
   margin-left: -22px;
   font-size: 16px;
 }
-#article-container h4:hover {
+#article-container h5:hover {
   padding-left: 34px;
 }
-#article-container h5 {
-  padding-left: 26px;
-}
-#article-container h5:before {
-  margin-left: -20px;
-  font-size: 14px;
-}
-#article-container h5:hover {
-  padding-left: 32px;
-}
 #article-container h6 {
-  padding-left: 26px;
+  padding-left: 28px;
 }
 #article-container h6:before {
-  margin-left: -20px;
-  font-size: 14px;
+  margin-left: -22px;
+  font-size: 16px;
 }
 #article-container h6:hover {
-  padding-left: 32px;
+  padding-left: 34px;
 }
 #article-container ol p,
 #article-container ul p {

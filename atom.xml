@@ -6,7 +6,7 @@
   <link href="https://ningli03.github.io/atom.xml" rel="self"/>
   
   <link href="https://ningli03.github.io/"/>
-  <updated>2022-08-14T08:38:59.223Z</updated>
+  <updated>2022-08-14T13:10:53.852Z</updated>
   <id>https://ningli03.github.io/</id>
   
   <author>
@@ -17,15 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>论如何优雅地写博客</title>
     <link href="https://ningli03.github.io/posts/0/"/>
     <id>https://ningli03.github.io/posts/0/</id>
     <published>2022-08-14T08:18:52.953Z</published>
-    <updated>2022-08-14T08:38:59.223Z</updated>
+    <updated>2022-08-14T13:10:53.852Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>花费了零零碎碎将近三天来搭建并美化个人博客网站，不好好写东西都对不起自己😉，本篇介绍如何优雅地写博客，主要内容分为两部分，一是如何优雅地使用latex公式，二是如何优雅地插入图片。</p><h2 id="latex公式"><a href="#latex公式" class="headerlink" title="latex公式"></a>latex公式</h2><h2 id="图床搭建"><a href="#图床搭建" class="headerlink" title="图床搭建"></a>图床搭建</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;花费了零零碎碎将近三天来搭建并美化个人博客网站，不好好写东西都对不起自己😉，本篇介绍如何优雅地写博客，主要内容分为两部分，一是如何优雅地使</summary>
+      
     
     
     
+    <category term="使用技巧" scheme="https://ningli03.github.io/categories/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
+    
+    <category term="hexo" scheme="https://ningli03.github.io/tags/hexo/"/>
+    
+    <category term="Typora" scheme="https://ningli03.github.io/tags/Typora/"/>
+    
+    <category term="PicGo" scheme="https://ningli03.github.io/tags/PicGo/"/>
+    
+    <category term="SM.MS图床" scheme="https://ningli03.github.io/tags/SM-MS%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="写博客" scheme="https://ningli03.github.io/tags/%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   

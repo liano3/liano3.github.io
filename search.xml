@@ -4,13 +4,33 @@
   
     
     <entry>
-      <title></title>
+      <title>论如何优雅地写博客</title>
       <link href="/posts/0/"/>
       <url>/posts/0/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>花费了零零碎碎将近三天来搭建并美化个人博客网站，不好好写东西都对不起自己😉，本篇介绍如何优雅地写博客，主要内容分为两部分，一是如何优雅地使用latex公式，二是如何优雅地插入图片。</p><h2 id="latex公式"><a href="#latex公式" class="headerlink" title="latex公式"></a>latex公式</h2><h2 id="图床搭建"><a href="#图床搭建" class="headerlink" title="图床搭建"></a>图床搭建</h2>]]></content>
       
       
+      <categories>
+          
+          <category> 使用技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> Typora </tag>
+            
+            <tag> PicGo </tag>
+            
+            <tag> SM.MS图床 </tag>
+            
+            <tag> 写博客 </tag>
+            
+        </tags>
       
     </entry>
     

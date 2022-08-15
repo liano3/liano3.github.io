@@ -16,8 +16,8 @@
 }
 
 #web_bg {
-    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-} */
+    background-image: linear-gradient(to top, #f1f1d7 0%, #b0e0e6 100%);
+}
 
 /* 滚动条 */
 ::-webkit-scrollbar {

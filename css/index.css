@@ -178,6 +178,13 @@ template {
 [hidden] {
   display: none
 }
+
+@media screen and (max-width: 800px) {
+  #aside_content div:not(:last-child) {
+    display: none;
+    font-size: 13px;
+  }
+}
 .limit-one-line,
 #article-container .flink .flink-item-name,
 #article-container .flink .flink-item-desc,

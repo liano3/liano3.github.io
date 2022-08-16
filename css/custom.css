@@ -1,0 +1,81 @@
+#content-inner.layout h1::before {
+    color: #ef50a8;
+    margin-left: -1.55rem;
+    font-size: 1.3rem;
+    margin-top: -0.23rem;
+}
+
+#content-inner.layout h2::before {
+    color: #ff8000;
+    margin-left: -1.35rem;
+    font-size: 1.1rem;
+    margin-top: -0.12rem;
+}
+
+#content-inner.layout h3::before {
+    color: #034ea1;
+    margin-left: -1.22rem;
+    font-size: 0.95rem;
+    margin-top: -0.09rem;
+}
+
+#content-inner.layout h4::before {
+    color: #15ad66;
+    margin-left: -1.05rem;
+    font-size: 0.8rem;
+    margin-top: -0.09rem;
+}
+
+#content-inner.layout h1:hover,
+#content-inner.layout h2:hover,
+#content-inner.layout h3:hover,
+#content-inner.layout h4:hover{
+    color: #49b1f5;
+}
+
+#content-inner.layout h1:hover::before,
+#content-inner.layout h2:hover::before,
+#content-inner.layout h3:hover::before,
+#content-inner.layout h4:hover::before{
+    color: #49b1f5;
+    -webkit-animation: ccc 3.2s linear infinite;
+    animation: ccc 3.2s linear infinite;
+}
+
+/* 文章页H1-H6图标样式效果 */
+h1::before,
+h2::before,
+h3::before,
+h4::before{
+    -webkit-animation: ccc 1.6s linear infinite;
+    animation: ccc 1.6s linear infinite;
+}
+
+@-webkit-keyframes ccc {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(-1turn);
+        transform: rotate(-1turn)
+    }
+}
+
+@keyframes ccc {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(-1turn);
+        transform: rotate(-1turn)
+    }
+}
+
+/* 页面设置icon转动速度调整 */
+#rightside_config i.fas.fa-cog.fa-spin {
+    animation: fa-spin 5s linear infinite;
+}

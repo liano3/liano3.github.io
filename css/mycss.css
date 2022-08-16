@@ -16,7 +16,7 @@
 }
 
 #web_bg {
-    background-image: linear-gradient(to right, #f1f1d7 0%, #b0e0e6 100%);
+    background-image: linear-gradient(to left, #b0e0e6 0%, #f1f1d7 100%);
 }
 
 /* 滚动条 */

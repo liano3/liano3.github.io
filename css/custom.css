@@ -1,28 +1,28 @@
 #content-inner.layout h1::before {
     color: #ef50a8;
     margin-left: -1.55rem;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin-top: -0.23rem;
 }
 
 #content-inner.layout h2::before {
     color: #ff8000;
     margin-left: -1.35rem;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     margin-top: -0.12rem;
 }
 
 #content-inner.layout h3::before {
     color: #034ea1;
     margin-left: -1.22rem;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     margin-top: -0.09rem;
 }
 
 #content-inner.layout h4::before {
     color: #15ad66;
     margin-left: -1.05rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-top: -0.09rem;
 }
 

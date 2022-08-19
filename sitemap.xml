@@ -165,6 +165,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://liano.top/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liano.top/tags/leetcode/</loc>
+    <lastmod>2022-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liano.top/tags/c/</loc>
+    <lastmod>2022-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -176,6 +197,13 @@
   
   <url>
     <loc>https://liano.top/categories/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2022-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liano.top/categories/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

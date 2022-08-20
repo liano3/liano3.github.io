@@ -3234,7 +3234,7 @@ h1.page-title + .tag-cloud-list {
 }
 .business-center {
   position: relative;
-  margin: 20px auto;
+  margin: 50px auto;
   display: block;
   left: calc(50% - 200px);
 }

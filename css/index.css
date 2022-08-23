@@ -1369,7 +1369,7 @@ canvas:not(#ribbon-canvas),
   --white: #fff;
   --text-highlight-color: #1f2d3d;
   --blockquote-color: #6a737d;
-  --blockquote-bg: rgba(73,177,245,0.1);
+  --blockquote-bg: rgba(199,237,204,0.1);
   --reward-pop: #f5f5f5;
   --toc-link-color: #666261;
   --card-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
@@ -1541,7 +1541,7 @@ img:not([src]) {
 blockquote {
   margin: 0 0 20px;
   padding: 12px 15px;
-  border-left: 3px solid #49b1f5;
+  border-left: 3px solid #40e0d0;
   background-color: var(--blockquote-bg);
   color: var(--blockquote-color);
 }
@@ -1680,7 +1680,7 @@ figure.highlight pre .javascript .function {
 }
 #article-container code {
   padding: 2px 4px;
-  background: rgba(27,31,35,0.05);
+  background: rgba(27,31,35,0.5);
   color: #f47466;
 }
 #article-container pre {
@@ -7628,7 +7628,7 @@ h1.page-title + .tag-cloud-list {
   overflow-wrap: break-word;
 }
 #article-container a {
-  color: #99a9bf;
+  color: #49b1f5;
   text-decoration: underline;
 }
 #article-container a:hover {
@@ -9251,7 +9251,7 @@ blockquote.pullquote.right {
   box-shadow: none;
 }
 [data-theme='dark'] #article-container .note code {
-  background: rgba(27,31,35,0.05);
+  background: rgba(27,31,35,0.5);
 }
 [data-theme='dark'] #article-container .aplayer {
   filter: brightness(0.8);

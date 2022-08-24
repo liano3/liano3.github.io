@@ -4,6 +4,10 @@
     background: rgba(255, 255, 255, .3);
 }
 
+#post {
+    line-height: 150%;
+}
+
 /* 所有背景（包括首页卡片、文章页、页面页等） */
 #aside_content .card-widget,
 #recent-posts>.recent-post-item,

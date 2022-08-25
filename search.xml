@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>神奇的位运算</title>
+      <link href="/posts/11eece28/"/>
+      <url>/posts/11eece28/</url>
+      
+        <content type="html"><![CDATA[<h2 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h2><p>位运算是算法题里比较特殊的一种类型，它们利用二进制位运算的特性进行一些奇妙的优化和计算。常用的位运算符号包括：“∧”按位异或（取不同）、“&amp;”按位与（取交）、“|”按位或（取并）、“~”取反、“&lt;&lt;” 算术左移和“&gt;&gt;”算术右移。</p><p>除此之外，<code>n &amp; (n - 1)</code> 可以去除 n 的位级表示中最低的那一位，例如对于二进制表示 11110100 ，减去 1 得到 11110011，这两个数按位与得到 11110000。<code>n &amp; (-n)</code> 可以得到 n 的位级表示中最低的那一位，例如对于二进制表示 11110100，取负得到 00001100，这两个数按位与得到 00000100。</p><h2 id="位运算基础问题"><a href="#位运算基础问题" class="headerlink" title="位运算基础问题"></a>位运算基础问题</h2><h3 id="汉明距离"><a href="#汉明距离" class="headerlink" title="汉明距离"></a><a href="https://leetcode.cn/problems/hamming-distance/">汉明距离</a></h3><p><strong>题目描述：</strong></p><p>两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。</p><p>给你两个整数 x 和 y，计算并返回它们之间的汉明距离。</p><p><strong>测试样例：</strong></p><p>示例 1：</p><blockquote><p>输入：x = 1, y = 4<br>输出：2<br>解释：<br>1   (0 0 0 1)<br>4   (0 1 0 0)</p></blockquote><p>示例 2：</p><blockquote><p>输入：x = 3, y = 1<br>输出：1</p></blockquote><p><strong>题解：</strong></p><p>按位异或，统计 1 的个数即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">hammingDistance</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> diff = x ^ y, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (diff) &#123;</span><br><span class="line">        ans += diff &amp; <span class="number">1</span>;</span><br><span class="line">        diff &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="颠倒二进制位"><a href="#颠倒二进制位" class="headerlink" title="颠倒二进制位"></a><a href="https://leetcode.cn/problems/reverse-bits/">颠倒二进制位</a></h3><p><strong>题目描述：</strong></p><p>颠倒给定的 32 位无符号整数的二进制位。</p><p><strong>题解：</strong></p><p>使用算术左移和右移，可以很轻易地实现二进制的翻转。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">uint32_t</span> <span class="title">reverseBits</span><span class="params">(<span class="type">uint32_t</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">uint32_t</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;</span><br><span class="line">        ans &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        ans += n &amp; <span class="number">1</span>;</span><br><span class="line">        n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 位运算 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> c++ </tag>
+            
+            <tag> 位运算 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>巧解数学问题</title>
       <link href="/posts/4621e56e/"/>
       <url>/posts/4621e56e/</url>

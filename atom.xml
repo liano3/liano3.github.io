@@ -159,15 +159,15 @@
     <category term="DFS,BFS" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/DFS-BFS/"/>
     
     
-    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
-    
-    <category term="c++" scheme="https://liano.top/tags/c/"/>
-    
     <category term="DFS" scheme="https://liano.top/tags/DFS/"/>
     
     <category term="BFS" scheme="https://liano.top/tags/BFS/"/>
     
     <category term="回溯" scheme="https://liano.top/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
+    
+    <category term="c++" scheme="https://liano.top/tags/c/"/>
     
   </entry>
   
@@ -223,11 +223,11 @@
     <category term="二分查找" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
     
-    <category term="二分查找" scheme="https://liano.top/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
     <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
     
     <category term="c++" scheme="https://liano.top/tags/c/"/>
+    
+    <category term="二分查找" scheme="https://liano.top/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
   </entry>
   
@@ -363,9 +363,9 @@
     <link href="https://liano.top/posts/fd836635/"/>
     <id>https://liano.top/posts/fd836635/</id>
     <published>2022-08-12T12:32:17.387Z</published>
-    <updated>2022-08-31T00:50:28.724Z</updated>
+    <updated>2022-09-02T05:08:16.310Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="node-js与hexo"><a href="#node-js与hexo" class="headerlink" title="node.js与hexo"></a>node.js与hexo</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p>这里坑很多，<a href="https://zhuanlan.zhihu.com/p/337663452">参考网址</a></p><blockquote><p>若nvm use时出现乱码，是权限不够，本地搜索命令提示符，管理员身份打开，重试即可</p></blockquote><p><strong>测试：</strong></p><p>cmd运行 <code>npm install webpack -g</code>，要耐心等待下载完成</p><p>在<code>E:\nvm\v16.17.0\node_global\node_modules</code>目录中是否有webpack文件夹</p><h3 id="创建Github-Pages"><a href="#创建Github-Pages" class="headerlink" title="创建Github Pages"></a>创建Github Pages</h3><p>Hexo就是我们的个人博客网站的框架，在安装之前，我们要先在GitHub上创立一个仓库，名字必须为<code>username.github.io</code>（如果名字里有大写字母，要变成小写）如下图：</p><p><img src="https://s2.loli.net/2022/08/14/ZWbfCiL86hkMdEt.png" alt="image-20220812170745125" style="zoom:67%;" /></p><p>仓库一定要是 public 的</p><p>然后点击 settings -&gt; pages，出现下图所示就对了</p><p><img src="https://s2.loli.net/2022/08/14/uJSt5OkYU2cQi1N.jpg" alt="v2-6a000b836ae32c3d118c1fdeb4696f1c_r" style="zoom:67%;" /></p><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先新建立一个文件夹 Blog（博客相关东西的本地存放点，设在你想设的位置），点开 Blog 文件夹，在该文件夹内鼠标右键打开 Git Bush Here，输入npm命令 <code>npm install -g hexo-cli</code> 安装Hexo</p><p>安装完成后，输入 <code>hexo init</code> 命令初始化博客</p><p>若显示command not found，添加一个Path系统环境变量：<code>E:\Blog\node_modules\.bin</code>（根据自己路径修改</p><p>然后输入 <code>hexo g</code> 静态部署</p><p>这时网页已经在本地部署完成，输入 <code>hexo s</code> 命令可以查看：</p><p><img src="https://s2.loli.net/2022/08/14/7XM9paWcfTVDUy8.png" alt="v2-11a0b4917c962bab07a48f7a04160e8b_r" style="zoom:67%;" /></p><p>浏览器网址栏输入 <a href="http://localhost:4000">http://localhost:4000</a> 就可以打开新部署的网页</p><p>看完后 ctr+C 停止运行服务器</p><h3 id="将-hexo-部署到-github"><a href="#将-hexo-部署到-github" class="headerlink" title="将 hexo 部署到 github"></a>将 hexo 部署到 github</h3><p>现在回到我们的 Blog 文件夹，用记事本打开 _config.yml 文件，如下图：</p><p><img src="https://s2.loli.net/2022/08/14/DwjKrdA6sOuiZxz.png" alt="image-20220812172036226" style="zoom:67%;" /></p><p>下滑到文件底部，补全为以下内容：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/liano3/liano3.github.io.git  #你的仓库地址</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure><p>然后回到 Blog 文件夹中，打开 Git Bash，安装Git部署插件，输入命令：<code>npm install hexo-deployer-git --save</code> ，然后分别输入以下三条命令：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   #清除缓存文件 db.json 和已生成的静态文件 public</span><br><span class="line">hexo g       #生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span><br><span class="line">hexo d       #自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span><br></pre></td></tr></table></figure><p>完成以后，打开浏览器，输入 <a href="https://yourname.github.io">https://yourname.github.io</a> 就可以打开你的网页了</p><h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="node-js与hexo"><a href="#node-js与hexo" class="headerlink" title="node.js与hexo"></a>node.js与hexo</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p>这里坑很多，<a href="https://zhuanlan.zhihu.com/p/337663452">参考网址</a></p><blockquote><p>设置好镜像后nvm install 16.17.0，然后nvm use 16.17.0</p><p>若nvm use时出现乱码，是权限不够，本地搜索命令提示符，管理员身份打开，重试即可</p><p>如果之前安装过node，可能会遇到其他乱七八糟的问题，建议运行nvm安装文件夹内的unis000.exe，这样它会删除自己和之前的node，重头再来</p></blockquote><p><strong>测试：</strong></p><p>cmd运行 <code>npm install webpack -g</code>，要耐心等待下载完成</p><p>在<code>E:\nvm\v16.17.0\node_global\node_modules</code>目录中是否有webpack文件夹</p><h3 id="创建Github-Pages"><a href="#创建Github-Pages" class="headerlink" title="创建Github Pages"></a>创建Github Pages</h3><p>Hexo就是我们的个人博客网站的框架，在安装之前，我们要先在GitHub上创立一个仓库，名字必须为<code>username.github.io</code>（如果名字里有大写字母，要变成小写）如下图：</p><p><img src="https://s2.loli.net/2022/08/14/ZWbfCiL86hkMdEt.png" alt="image-20220812170745125" style="zoom:67%;" /></p><p>仓库一定要是 public 的</p><p>然后点击 settings -&gt; pages，出现下图所示就对了</p><p><img src="https://s2.loli.net/2022/09/02/OGp4al7AQjsb3ED.png" alt="github-pages.png" style="zoom: 50%;" /></p><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先新建立一个文件夹 Blog（博客相关东西的本地存放点，设在你想设的位置），点开 Blog 文件夹，在该文件夹内鼠标右键打开 Git Bash Here，输入npm命令 <code>npm install -g hexo-cli</code> 安装Hexo</p><p>安装完成后，输入 <code>hexo init</code> 命令初始化博客</p><blockquote><p>若显示command not found，添加一个Path系统环境变量：<code>E:\Blog\node_modules\.bin</code>（根据自己路径修改</p><p>若出现下图问题，可能是网络不稳定，挂个梯子或者重试几次<img src="https://s2.loli.net/2022/09/02/elSJ7UzucM2VZmN.png" alt="Snipaste_2022-09-02_13-02-50.png" style="zoom: 67%;" /></p></blockquote><p>然后输入 <code>hexo g</code> 静态部署</p><p>这时网页已经在本地部署完成，输入 <code>hexo s</code> 命令可以查看：</p><p><img src="https://s2.loli.net/2022/08/14/7XM9paWcfTVDUy8.png" alt="v2-11a0b4917c962bab07a48f7a04160e8b_r" style="zoom:67%;" /></p><p>浏览器网址栏输入 <a href="http://localhost:4000">http://localhost:4000</a> 就可以打开新部署的网页</p><p>看完后 ctr+C 停止运行服务器</p><h3 id="将-hexo-部署到-github"><a href="#将-hexo-部署到-github" class="headerlink" title="将 hexo 部署到 github"></a>将 hexo 部署到 github</h3><p>现在回到我们的 Blog 文件夹，用记事本打开 _config.yml 文件，如下图：</p><p><img src="https://s2.loli.net/2022/08/14/DwjKrdA6sOuiZxz.png" alt="image-20220812172036226" style="zoom:67%;" /></p><p>下滑到文件底部，补全为以下内容：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/liano3/liano3.github.io.git  #你的仓库地址</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure><p>然后回到 Blog 文件夹中，打开 Git Bash，安装Git部署插件，输入命令：<code>npm install hexo-deployer-git --save</code> ，然后分别输入以下三条命令：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   #清除缓存文件 db.json 和已生成的静态文件 public</span><br><span class="line">hexo g       #生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span><br><span class="line">hexo d       #自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span><br></pre></td></tr></table></figure><p>完成以后，打开浏览器，输入 <a href="https://yourname.github.io">https://yourname.github.io</a> 就可以打开你的网页了</p><h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>]]></content>
     
     
       

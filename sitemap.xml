@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://liano.top/posts/735e5788/</loc>
+    <loc>https://liano.top/posts/a5649831/</loc>
     
     <lastmod>2022-09-02</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://liano.top/posts/a5649831/</loc>
+    <loc>https://liano.top/posts/735e5788/</loc>
     
     <lastmod>2022-09-02</lastmod>
     
@@ -366,6 +366,13 @@
   </url>
   
   <url>
+    <loc>https://liano.top/categories/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E6%B3%95/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://liano.top/categories/%E7%AE%97%E6%B3%95/DFS-BFS/</loc>
     <lastmod>2022-09-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -409,13 +416,6 @@
   
   <url>
     <loc>https://liano.top/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://liano.top/categories/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E6%B3%95/</loc>
     <lastmod>2022-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

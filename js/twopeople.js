@@ -1,3 +1,4 @@
+// Made with Zdog
 var BokehShape = Zdog.Shape.subclass({
     bokehSize: 5,
     bokehLimit: 64
@@ -703,3 +704,4 @@ function update() {
 
     then = now;
 }
+	          //# sourceURL=pen.js

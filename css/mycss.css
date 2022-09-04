@@ -120,6 +120,10 @@
     background: rgba(0, 0, 0, 0.5) !important;
 }
 
+[data-theme="dark"] #recent-posts .recent-post-item {
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
 /* 阅读模式 */
 .read-mode #aside-content .card-widget {
     background: rgba(158, 204, 171, 0.5) !important;

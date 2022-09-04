@@ -120,17 +120,17 @@
     background: rgba(0, 0, 0, 0.5) !important;
 }
 
-[data-theme="dark"] #recent-posts .recent-post-item {
+[data-theme="dark"] #recent-posts>.recent-post-item {
     background: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* 阅读模式 */
 .read-mode #aside-content .card-widget {
-    background: rgba(158, 204, 171, 0.5) !important;
+    background: rgba(192, 218, 199, 0.5) !important;
 }
 
 .read-mode div#post {
-    background: rgba(158, 204, 171, 0.5) !important;
+    background: rgba(192, 218, 199, 0.5) !important;
 }
 
 [data-theme="dark"] .read-mode #aside-content .card-widget {

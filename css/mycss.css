@@ -3,6 +3,11 @@
     background-image: linear-gradient(to left, #b0e0e6 0%, #f1f1d7 100%);
 }
 
+/* 行间距 */
+#article-container {
+    line-height: 150%;
+}
+
 /* 滚动条 */
 ::-webkit-scrollbar {
     width: 8px;

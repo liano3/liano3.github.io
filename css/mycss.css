@@ -1,24 +1,4 @@
-/* 文章页背景 */
-.layout_post>#post {
-    /* 以下代表白色透明度为0.3 */
-    background: rgba(255, 255, 255, .3);
-}
-
-#article-container {
-    line-height: 150%;
-}
-
-/* 所有背景（包括首页卡片、文章页、页面页等） */
-#aside_content .card-widget,
-#recent-posts>.recent-post-item,
-.layout_page>div:first-child:not(.recent-posts),
-.layout_post>#page,
-.layout_post>#post,
-.read-mode .layout_post>#post {
-    /* 以下代表白色透明度为0.3 */
-    background: rgba(255, 255, 255, .3);
-}
-
+/*页面背景*/
 #web_bg {
     background-image: linear-gradient(to left, #b0e0e6 0%, #f1f1d7 100%);
 }
@@ -129,4 +109,32 @@
 
 #sidebar #menu-mask {
     background: rgba(255, 255, 255, 0);
+}
+
+/* 夜间模式 */
+[data-theme="dark"] #aside-content .card-widget {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] div#post {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 阅读模式 */
+.read-mode #aside-content .card-widget {
+    background: rgba(158, 204, 171, 0.5) !important;
+}
+
+.read-mode div#post {
+    background: rgba(158, 204, 171, 0.5) !important;
+}
+
+[data-theme="dark"] .read-mode #aside-content .card-widget {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .read-mode div#post {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #ffffff;
 }

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Dijkstra算法</title>
+      <link href="/posts/c4fedc02/"/>
+      <url>/posts/c4fedc02/</url>
+      
+        <content type="html"><![CDATA[<h2 id="抽象定义"><a href="#抽象定义" class="headerlink" title="抽象定义"></a>抽象定义</h2><p>输入：加权图 $G=(V(G),E(G))$，$w:E(G)\rightarrow \mathbf{R}^+$，顶点 $u_0\in V(G)$</p><p>输出：$u_0$ 到其余所有顶点的最短路径和对应距离</p><p>集合S用来存储已经找到的最短路径，l记录路径终点的前导节点</p><ol><li>任给 $u,v\in V(G)$，若 $u,v\notin E(G)$，令 $w(uv)=\infty$</li><li>令 $d(u_0)=0,\quad l(u_0)=u_0$; 任给 $u \in V(G),\quad u \neq u_0,\quad d(u)=\infty,\quad l(u)=*$; $S_0=\left\{u_0\right\};\quad i=0$</li><li>对任给 $u\in V(G)-S_i$，若 $d(u_i)+w(u_iu)&lt;d(u)$，则令 $d(u)=d(u_i)+w(u_iu)$，$l(u)=u_i$</li><li>选出 $u_{i+1}\in V(G)-S_i$，使得 $d(u_{i+1})=min_{u\in V(G)-S_i}d(u)$，令 $S_{i+1}=S_i\cup{u_{i+1}}$</li><li>若 $i=v(G)-1$，算法停止；否则，i++，转(3)</li></ol><h2 id="通俗理解"><a href="#通俗理解" class="headerlink" title="通俗理解"></a>通俗理解</h2><p>其实是贪心加广搜加动归，大致思路是这样的：</p><p>先把内层的，最靠近起点的最短路径确定好，然后通过已知的最短路径做中继点，更新其外层节点的现有最短路径，这里的内外层其实是根据离起点的距离分的。就是说要到1000m外的一个地方，中间很多休息区，我要贪心地走每一步，即保证我前面走过的路一定是在那个距离下最短的路，这里的距离其实就是上面说的层数或者下标 i</p><h2 id="例题详解"><a href="#例题详解" class="headerlink" title="例题详解"></a>例题详解</h2><h3 id="例1："><a href="#例1：" class="headerlink" title="例1："></a>例1：</h3><p><strong>第一层：从v1出发，计算v1到其它节点的距离（无法连接则用“无穷”符号）</strong></p><p>全表找最小值，发现v1到v6最短为3</p><ul><li>S中添加一条最短路径：v1——v6</li><li>v6列标红不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/q9YjiC3WNxzSodm.png" alt="第一层" style="zoom:67%;" /></p><p><strong>第二层：从v1——v6出发，计算v1通过v6到其它节点的距离</strong></p><p>在全表中找最小值（v6列已经删除)，此时4为最小值，对应路径v1——v6——v5</p><ul><li>添加最短路径v1——v6——v5</li><li>v5列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/4bwz6pvhnaFAeK9.jpg" alt="第二层" style="zoom:67%;" /></p><p><strong>第三层：从v1——v6——v5出发，计算v1通过v6及v5到其它节点的距离</strong></p><ul><li>已知v1——v6——v5长度为4；</li><li><p>发现，v5不能到现存的其它任何一个节点，因此距离全部为“无穷”</p></li><li><p>看全表（v5和v6已经删除）找最小值，5是最小值，对应的路径是v1——v6——v2</p></li><li>添加最短路径v1——v6——v2</li><li>v2列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/lLebp7AdxZ3suzi.jpg" alt="第三层" style="zoom:67%;" /></p><p>新最短路径：v1——v6——v2</p><p><strong>第四轮：从v1——v6——v2出发，计算v1通过v6及v2到其它节点的距离</strong></p><p>v1——v6——v2到其它现存节点的距离（v2，v5，v6已删除)</p><ul><li>遍历全表（v2，v5和v6已经删除）发现，9最小，对应的路径为v1——v6——v4</li><li>添加最短路径v1——v6——v4</li><li>v4列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/d8WpBj2ATSgOus9.jpg" alt="第四层" style="zoom:67%;" /></p><p>新最短路径：v1——v6——v4</p><p><strong>第五轮：从v1——v6——v4出发，计算v1通过v6及v4到其它节点的距离</strong></p><p>计算v1——v6——v4到其它节点的距离（只剩v3列)</p><ul><li>遍历全表发现，12是现存的最小值，对应v1——v6——v2——v3路径最短</li><li>添加最短路径v1——v6——v2——v3</li><li>v3列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/Ickhsvm1NDlKFSY.jpg" alt="第五层" style="zoom:67%;" /></p><p>添加最后一条最短路径：v1——v6——v2——v3</p><ul><li>由于全部列已经删除，因此结束遍历</li></ul><p><strong>最终的表格</strong></p><p><img src="https://s2.loli.net/2022/09/05/gbsDwiWuhVYxKfI.jpg" alt="最终表格" style="zoom:67%;" /></p><blockquote><p>每列的<strong>标红值</strong>，则为<strong>v1到该节点的最短距离</strong>；从<strong>S列中找结尾为该列的路径。</strong></p></blockquote><p><strong>结果汇总</strong></p><p>v1到各节点的路径及其最短距离</p><ul><li><p><strong>v2</strong>：<strong>v1——v6——v2</strong> = 5</p></li><li><p><strong>v3</strong>：<strong>v1——v6——v2——v3</strong> = 12</p></li><li><strong>v4</strong>：<strong>v1——v6——v4</strong> = 9</li><li><strong>v5</strong>：<strong>v1——v6——v5</strong> = 4</li><li><strong>v6</strong>：<strong>v1——v6</strong> = 3</li></ul><h3 id="例2："><a href="#例2：" class="headerlink" title="例2："></a>例2：</h3><p><img src="https://s2.loli.net/2022/09/05/D6wuS4y3QVhziBN.jpg" alt="图解算法"  /></p><p>参考文章：</p><p><a href="https://zhuanlan.zhihu.com/p/454373256">【看完必懂】Dijkstra算法（附案例详解）- 知乎(zhihu.com)</a>         </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 图论笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 图论 </tag>
+            
+            <tag> 最短路径 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>butterfly主题标签外挂</title>
       <link href="/posts/61d8cc98/"/>
       <url>/posts/61d8cc98/</url>
@@ -371,13 +398,13 @@
       
         <tags>
             
+            <tag> 网页制作 </tag>
+            
             <tag> 自建博客 </tag>
             
             <tag> hexo </tag>
             
             <tag> github </tag>
-            
-            <tag> 网页制作 </tag>
             
         </tags>
       
@@ -404,13 +431,13 @@
       
         <tags>
             
+            <tag> 网页制作 </tag>
+            
             <tag> 自建博客 </tag>
             
             <tag> hexo </tag>
             
             <tag> github </tag>
-            
-            <tag> 网页制作 </tag>
             
         </tags>
       
@@ -437,13 +464,13 @@
       
         <tags>
             
+            <tag> 网页制作 </tag>
+            
             <tag> 自建博客 </tag>
             
             <tag> hexo </tag>
             
             <tag> github </tag>
-            
-            <tag> 网页制作 </tag>
             
         </tags>
       

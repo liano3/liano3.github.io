@@ -129,6 +129,22 @@
     background: rgba(0, 0, 0, 0.5) !important;
 }
 
+[data-theme="dark"] #archive {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] #page {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] #category {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] #tag {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
 /* 阅读模式 */
 .read-mode #aside-content .card-widget {
     background: rgba(192, 218, 199, 0.5) !important;

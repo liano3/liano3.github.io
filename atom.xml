@@ -154,11 +154,11 @@
     <category term="分治法" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
     
     
+    <category term="分治法" scheme="https://liano.top/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
     <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
     
     <category term="c++" scheme="https://liano.top/tags/c/"/>
-    
-    <category term="分治法" scheme="https://liano.top/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
     
   </entry>
   
@@ -215,15 +215,15 @@
     <category term="DFS,BFS" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/DFS-BFS/"/>
     
     
+    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
+    
+    <category term="c++" scheme="https://liano.top/tags/c/"/>
+    
     <category term="DFS" scheme="https://liano.top/tags/DFS/"/>
     
     <category term="BFS" scheme="https://liano.top/tags/BFS/"/>
     
     <category term="回溯" scheme="https://liano.top/tags/%E5%9B%9E%E6%BA%AF/"/>
-    
-    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
-    
-    <category term="c++" scheme="https://liano.top/tags/c/"/>
     
   </entry>
   

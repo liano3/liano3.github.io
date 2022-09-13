@@ -6,7 +6,7 @@
   <link href="https://liano.top/atom.xml" rel="self"/>
   
   <link href="https://liano.top/"/>
-  <updated>2022-09-06T04:38:34.499Z</updated>
+  <updated>2022-09-13T12:16:59.038Z</updated>
   <id>https://liano.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vscode配置plantuml环境</title>
+    <link href="https://liano.top/posts/ef8bb752/"/>
+    <id>https://liano.top/posts/ef8bb752/</id>
+    <published>2022-09-13T10:57:55.381Z</published>
+    <updated>2022-09-13T12:16:59.038Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在学习数据结构时，老师推荐了画流程图的工具plantuml，虽可以在线使用，但总是觉得不太方便，又想到万能的编辑器vscode或许可以与之结合，于是上网找教程配置，果然可以，现记录如下。</p><h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><h3 id="配置Java"><a href="#配置Java" class="headerlink" title="配置Java"></a>配置Java</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe">戳这里直接下载</a>，双击下载的安装包进行安装</p><h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p>新建两个系统变量</p><div class="table-container"><table><thead><tr><th>变量名</th><th>变量值</th></tr></thead><tbody><tr><td>JAVA_HOME</td><td>E:\java\jdk-18.0.2.1(改为自己的安装目录)</td></tr><tr><td>CLASSPATH</td><td>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar</td></tr></tbody></table></div><p>找到系统变量PATH，添加一条<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</code></p><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>在cmd中分别输入<code>java</code>，<code>java -version</code>，<code>javac</code>，无报错即可。</p><h3 id="配置GraphViz"><a href="#配置GraphViz" class="headerlink" title="配置GraphViz"></a>配置GraphViz</h3><h4 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h4><p><a href="https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/6.0.1/windows_10_cmake_Release_graphviz-install-6.0.1-win64.exe">戳这里直接下载</a></p><p>下载后会有警告，把下载好的文件后缀改为.exe，双击，选择第二个自动添加系统变量的选项，然后安装（虽然不知道为什么，但这样可行</p><h4 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h4><p>cmd运行<code>dot -version</code>命令，正常运行即可</p><h3 id="配置vscode"><a href="#配置vscode" class="headerlink" title="配置vscode"></a>配置vscode</h3><p>没用过vscode的请自己找教程安装，那么万能的编辑器不用一下吗😉</p><h4 id="安装plantuml插件"><a href="#安装plantuml插件" class="headerlink" title="安装plantuml插件"></a>安装plantuml插件</h4><p>安装两个插件，<code>Graphviz Preview</code>，<code>PlantUML</code></p><p>然后就可以优雅地画图啦！</p><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul><li>新建文档，没有后缀名，写脚本，语法见<a href="https://plantuml.com/zh/">官方文档</a></li><li>Alt+D预览</li><li>Alt+S保存</li><li>导出图。打开Command palette，开启方式有两种：其一快捷键Ctrl + Shift+ P；其二对着脚本编辑框点击右键选择command palette，输入plantuml，选择导出图片选项。导出位置应该在根目录新建文件夹out里。</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在学习数据结构时，老师推荐了画流程图的工具plantuml，虽可以在线使用，但总是觉得不太方便，又想到万能的编辑器vscode或许可以与之结</summary>
+      
+    
+    
+    
+    <category term="工具使用" scheme="https://liano.top/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    <category term="plantuml" scheme="https://liano.top/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/plantuml/"/>
+    
+    
+    <category term="vscode" scheme="https://liano.top/tags/vscode/"/>
+    
+    <category term="plantuml" scheme="https://liano.top/tags/plantuml/"/>
+    
+    <category term="流程图" scheme="https://liano.top/tags/%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>Dijkstra算法</title>
@@ -215,15 +245,15 @@
     <category term="DFS,BFS" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/DFS-BFS/"/>
     
     
+    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
+    
+    <category term="c++" scheme="https://liano.top/tags/c/"/>
+    
     <category term="DFS" scheme="https://liano.top/tags/DFS/"/>
     
     <category term="BFS" scheme="https://liano.top/tags/BFS/"/>
     
     <category term="回溯" scheme="https://liano.top/tags/%E5%9B%9E%E6%BA%AF/"/>
-    
-    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
-    
-    <category term="c++" scheme="https://liano.top/tags/c/"/>
     
   </entry>
   
@@ -279,11 +309,11 @@
     <category term="二分查找" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
     
+    <category term="二分查找" scheme="https://liano.top/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+    
     <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
     
     <category term="c++" scheme="https://liano.top/tags/c/"/>
-    
-    <category term="二分查找" scheme="https://liano.top/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
   </entry>
   

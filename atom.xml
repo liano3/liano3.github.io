@@ -6,7 +6,7 @@
   <link href="https://liano.top/atom.xml" rel="self"/>
   
   <link href="https://liano.top/"/>
-  <updated>2022-09-13T15:15:57.558Z</updated>
+  <updated>2022-10-01T16:10:33.336Z</updated>
   <id>https://liano.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>模式匹配KMP算法</title>
+    <link href="https://liano.top/posts/b5cfc372/"/>
+    <id>https://liano.top/posts/b5cfc372/</id>
+    <published>2022-10-01T13:14:21.134Z</published>
+    <updated>2022-10-01T16:10:33.336Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>注：文中均为伪代码。主要是展示算法思想和实现方式</p></blockquote><h2 id="算法要求"><a href="#算法要求" class="headerlink" title="算法要求"></a>算法要求</h2><p>给定主串 S 和子串 T，要求返回 T 在 S 中第一次出现的位置，若不存在，返回 -1；</p><h2 id="暴力匹配"><a href="#暴力匹配" class="headerlink" title="暴力匹配"></a>暴力匹配</h2><p>以 S 的第 1 个字符为起点，逐个与 T 中字符比较，若匹配失败，起点向前进一位，即第二次匹配从第 2 个字符开始。直至匹配成功或无法匹配。</p><p>代码示例：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Index</span><span class="params">(String s, String t, <span class="type">int</span> pos)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (k &lt; s.length &amp;&amp; j &lt; t.length) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[k] == t[j]) &#123;</span><br><span class="line">            k++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            k = k - j + <span class="number">1</span>;<span class="comment">//k-j为当前起点位置，+1为下次匹配起点</span></span><br><span class="line">            j = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j &gt;= t.length)</span><br><span class="line">        <span class="keyword">return</span> (k - t.length);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度：O(mn)</p><h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2><h3 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h3><p>暴力匹配的缺点在于每次匹配失败主串和子串指针都要回到起点。KMP算法对此进行了优化，匹配失败后，主串指针不动，子串指针也不用回到起点，而是回溯到适当位置。</p><p><img src="https://s2.loli.net/2022/10/01/i9loNBXWkamvZH5.png" alt="模式匹配" style="zoom:67%;" /></p><p>如上图所示，假设现在在位置 x 处匹配失败了，如果子串 t 中在 x 前面存在与起点相同的一段字符串，分别记作 D 与 C ，又因为 AC，BD 已经匹配，所以这四个串完全相同，那么，就可以将子串向右滑动，即子串指针向前回溯一个到 C 的末尾，让 C 与 B 对齐，这样 BC 就匹配好了，所以主串指针不用回溯，继续向后比较即可。可以看出，如果存在这样的情况，则 C 的长度越长，匹配速度越快。所以在算法中，我们需要求出满足条件的最长的串 C。</p><p>看起来速度会提升不少，但是问题来了，它一步跳过那么多字符，有没有可能会漏掉中间可以成功匹配的情况呢？答案是不会。可以反证法，假如中间部分可以匹配成功，即 t 不用向右滑那么多就可以匹配成功，那么就存在更长的 C’（C向右加长）与 B’（B向左加长）相匹配，那么就有对应的 D’ （D向左加长）。这与 C 和 D 是 t 中符合条件的最长串相矛盾。</p><p>正确性没有问题了，如何实现呢？可以看出，子串 t 的回溯位置是由其本身的组成决定的，在不同位置匹配失败需要回溯的位置不同，在 t[j] 匹配失败需要回溯到的位置可以记为 next[j]。我们先不考虑 next 数组如何求，先写出算法框架。</p><p>代码示例如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> Max_Strlen 1024</span></span><br><span class="line"><span class="type">int</span> next[Max_Strlen];<span class="comment">//已经算好</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">KMP_index</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; s.length &amp;&amp; j &lt; t.length) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">-1</span> || s[i] == t[j]) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j = next[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j &gt;= t.length)</span><br><span class="line">        <span class="keyword">return</span> (i - t.length);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>第六行 j == -1 是因为记 next[0] = -1</p></blockquote><p>时间复杂度：O(m+n)</p><h3 id="计算next-j"><a href="#计算next-j" class="headerlink" title="计算next[j]"></a>计算next[j]</h3><h5 id="暴力穷举法"><a href="#暴力穷举法" class="headerlink" title="暴力穷举法"></a>暴力穷举法</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">next1</span><span class="params">(String t, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">    String str1, str2;</span><br><span class="line">    <span class="type">int</span> k = j;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        k--;</span><br><span class="line">        str1 = <span class="built_in">subString</span>(t, <span class="number">0</span>, k);<span class="comment">//对t，从t[0]开始，截取长度为 k 的串</span></span><br><span class="line">        str2 = <span class="built_in">subString</span>(t, j-k, k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (k &amp;&amp; <span class="built_in">strncmp</span>(str1, str2, k));</span><br><span class="line">    <span class="comment">//strncmp比较str1与str2前k个元素是否完全相同</span></span><br><span class="line">    <span class="keyword">if</span> (k == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="改进穷举法"><a href="#改进穷举法" class="headerlink" title="改进穷举法"></a>改进穷举法</h5><p>先判断尾元素是否相等，再比较串是否相等</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">next2</span><span class="params">(String t, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = j - <span class="number">2</span>; k &gt;= <span class="number">0</span>; k--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (t[k] == t[j<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">strncmp</span>(t, &amp;t[j-k<span class="number">-1</span>], k+<span class="number">1</span>) == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> (k + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="递推法"><a href="#递推法" class="headerlink" title="递推法"></a>递推法</h5><p><img src="https://s2.loli.net/2022/10/01/1jOmWwlkZJe6NQU.png" alt="递推求解next[j]" style="zoom:67%;" /></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">next3</span><span class="params">(String t, <span class="type">int</span> next[])</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> k, j = <span class="number">2</span>;</span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; t.length) &#123;</span><br><span class="line">        k = next[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (k &gt;= <span class="number">0</span> &amp;&amp; t[k] != t[j<span class="number">-1</span>])</span><br><span class="line">            k = next[k];</span><br><span class="line">        next[j] = k + <span class="number">1</span>;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>显然，递推法的效率最高，但是，递推法还有可以优化的地方，比如模式串为<code>aaaab</code>，主串为<code>aaabaaaab</code>，则当第一次匹配失败时，i = 3，j = 3，根据next[j]的指示，下一次比较 j = 2，然后比较 j = 1, j = 0。但实际上，因为模式串前四个都是相同的，所以下次匹配一定失败。所以可以做如下优化：当 s[i] != s[j] 时，若 t[j] == t[next[j]]，则直接跳过一次匹配，匹配 t[j] 与 t[next[next[j]]]。</p><p>代码示例：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">next_val</span><span class="params">(String t, <span class="type">int</span> nextval[])</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> k, j = <span class="number">2</span>;</span><br><span class="line">    nextval[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    nextval[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; t.length) &#123;</span><br><span class="line">        k = nextval[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (k &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (t[k] == t[j<span class="number">-1</span>] &amp;&amp; t[j] != t[k+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            k = nextval[k];</span><br><span class="line">        &#125;</span><br><span class="line">        nextval[j] = k + <span class="number">1</span>;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;注：文中均为伪代码。主要是展示算法思想和实现方式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;算法要求&quot;&gt;&lt;a href=&quot;#算法要求&quot; class=&quot;headerlink&quot; title=&quot;算法要求&quot;&gt;&lt;/a&gt;算法要求&lt;/h2&gt;&lt;p&gt;给定主</summary>
+      
+    
+    
+    
+    <category term="笔记" scheme="https://liano.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="数据结构" scheme="https://liano.top/categories/%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="模式匹配" scheme="https://liano.top/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/"/>
+    
+    <category term="KMP算法" scheme="https://liano.top/tags/KMP%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>vscode配置plantuml环境</title>
@@ -51,7 +82,7 @@
     <link href="https://liano.top/posts/c4fedc02/"/>
     <id>https://liano.top/posts/c4fedc02/</id>
     <published>2022-09-05T08:10:06.507Z</published>
-    <updated>2022-09-06T04:38:34.499Z</updated>
+    <updated>2022-10-01T13:19:35.837Z</updated>
     
     <content type="html"><![CDATA[<h2 id="抽象定义"><a href="#抽象定义" class="headerlink" title="抽象定义"></a>抽象定义</h2><p>输入：加权图 $G=(V(G),E(G)),\ w:E(G)\rightarrow \mathbf{R}^+$，顶点 $u_0\in V(G)$</p><p>输出：$u_0$ 到其余所有顶点的最短路径和对应距离</p><p>集合S用来存储已经找到的最短路径，l记录路径终点的前导节点</p><ol><li>任给 $u,v\in V(G)$，若 $u,v\notin E(G)$，令 $w(uv)=\infty$</li><li>令 $d(u_0)=0,\ l(u_0)=u_0$; 任给 $u \in V(G),\ u \neq u_0,\ d(u)=\infty,\quad l(u)=*$; $S_0=\left\{u_0\right\};\ i=0$</li><li>对任给 $u\in V(G)-S_i$，若 $d(u_i)+w(u_iu)&lt;d(u)$，则令 $d(u)=d(u_i)+w(u_iu),\ l(u)=u_i$</li><li>选出 $u_{i+1}\in V(G)-S_i$，使得 $d(u_{i+1})=min_{u\in V(G)-S_i}d(u)$，令 $S_{i+1}=S_i\cup{u_{i+1}}$</li><li>若 $i=v(G)-1$，算法停止；否则，i++，转(3)</li></ol><h2 id="通俗理解"><a href="#通俗理解" class="headerlink" title="通俗理解"></a>通俗理解</h2><p>其实是类似贪心加广搜加动归，大致思路是这样的：</p><p>先把内层的，最靠近起点的最短路径确定好，然后通过已知的最短路径做中继点，更新其外层节点的现有最短路径，这里的内外层其实是根据离起点的距离分的。就是说要到1000m外的一个地方，中间很多休息区，我要贪心地走每一步，即保证我一定是通过最短路径走到前导节点。到目标点的路径长度随着前导节点的变化不断变短，直至最短。</p><h2 id="例题详解"><a href="#例题详解" class="headerlink" title="例题详解"></a>例题详解</h2><h3 id="例1："><a href="#例1：" class="headerlink" title="例1："></a>例1：</h3><p><strong>第一层：从v1出发，计算v1到其它节点的距离（无法连接则用“无穷”符号）</strong></p><p>全表找最小值，发现v1到v6最短为3</p><ul><li>S中添加一条最短路径：v1——v6</li><li>v6列标红不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/q9YjiC3WNxzSodm.png" alt="第一层" style="zoom:67%;" /></p><p><strong>第二层：从v1——v6出发，计算v1通过v6到其它节点的距离</strong></p><p>在全表中找最小值（v6列已经删除)，此时4为最小值，对应路径v1——v6——v5</p><ul><li>添加最短路径v1——v6——v5</li><li>v5列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/4bwz6pvhnaFAeK9.jpg" alt="第二层" style="zoom:67%;" /></p><p><strong>第三层：从v1——v6——v5出发，计算v1通过v6及v5到其它节点的距离</strong></p><ul><li>已知v1——v6——v5长度为4；</li><li><p>发现，v5不能到现存的其它任何一个节点，因此距离全部为“无穷”</p></li><li><p>看全表（v5和v6已经删除）找最小值，5是最小值，对应的路径是v1——v6——v2</p></li><li>添加最短路径v1——v6——v2</li><li>v2列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/lLebp7AdxZ3suzi.jpg" alt="第三层" style="zoom:67%;" /></p><p>新最短路径：v1——v6——v2</p><p><strong>第四轮：从v1——v6——v2出发，计算v1通过v6及v2到其它节点的距离</strong></p><p>v1——v6——v2到其它现存节点的距离（v2，v5，v6已删除)</p><ul><li>遍历全表（v2，v5和v6已经删除）发现，9最小，对应的路径为v1——v6——v4</li><li>添加最短路径v1——v6——v4</li><li>v4列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/d8WpBj2ATSgOus9.jpg" alt="第四层" style="zoom:67%;" /></p><p>新最短路径：v1——v6——v4</p><p><strong>第五轮：从v1——v6——v4出发，计算v1通过v6及v4到其它节点的距离</strong></p><p>计算v1——v6——v4到其它节点的距离（只剩v3列)</p><ul><li>遍历全表发现，12是现存的最小值，对应v1——v6——v2——v3路径最短</li><li>添加最短路径v1——v6——v2——v3</li><li>v3列不再考虑</li></ul><p><img src="https://s2.loli.net/2022/09/05/Ickhsvm1NDlKFSY.jpg" alt="第五层" style="zoom:67%;" /></p><p>添加最后一条最短路径：v1——v6——v2——v3</p><ul><li>由于全部列已经删除，因此结束遍历</li></ul><p><strong>最终的表格</strong></p><p><img src="https://s2.loli.net/2022/09/05/gbsDwiWuhVYxKfI.jpg" alt="最终表格" style="zoom:67%;" /></p><blockquote><p>每列的<strong>标红值</strong>，则为<strong>v1到该节点的最短距离</strong>；从<strong>S列中找结尾为该列的路径。</strong></p></blockquote><p><strong>结果汇总</strong></p><p>v1到各节点的路径及其最短距离</p><ul><li><p><strong>v2</strong>：<strong>v1——v6——v2</strong> = 5</p></li><li><p><strong>v3</strong>：<strong>v1——v6——v2——v3</strong> = 12</p></li><li><strong>v4</strong>：<strong>v1——v6——v4</strong> = 9</li><li><strong>v5</strong>：<strong>v1——v6——v5</strong> = 4</li><li><strong>v6</strong>：<strong>v1——v6</strong> = 3</li></ul><h3 id="例2："><a href="#例2：" class="headerlink" title="例2："></a>例2：</h3><p><img src="https://s2.loli.net/2022/09/05/D6wuS4y3QVhziBN.jpg" alt="图解算法"  /></p><p>参考文章：</p><p><a href="https://zhuanlan.zhihu.com/p/454373256">【看完必懂】Dijkstra算法（附案例详解）- 知乎(zhihu.com)</a>         </p>]]></content>
     
@@ -63,10 +94,12 @@
     
     
     
-    <category term="图论笔记" scheme="https://liano.top/categories/%E5%9B%BE%E8%AE%BA%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://liano.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="图论" scheme="https://liano.top/categories/%E7%AC%94%E8%AE%B0/%E5%9B%BE%E8%AE%BA/"/>
     
     
-    <category term="图论" scheme="https://liano.top/tags/%E5%9B%BE%E8%AE%BA/"/>
+    <category term="Dijkstra算法" scheme="https://liano.top/tags/Dijkstra%E7%AE%97%E6%B3%95/"/>
     
     <category term="最短路径" scheme="https://liano.top/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/"/>
     
@@ -184,11 +217,11 @@
     <category term="分治法" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
     
     
-    <category term="分治法" scheme="https://liano.top/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
-    
     <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
     
     <category term="c++" scheme="https://liano.top/tags/c/"/>
+    
+    <category term="分治法" scheme="https://liano.top/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
     
   </entry>
   
@@ -245,15 +278,15 @@
     <category term="DFS,BFS" scheme="https://liano.top/categories/%E7%AE%97%E6%B3%95/DFS-BFS/"/>
     
     
-    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
-    
-    <category term="c++" scheme="https://liano.top/tags/c/"/>
-    
     <category term="DFS" scheme="https://liano.top/tags/DFS/"/>
     
     <category term="BFS" scheme="https://liano.top/tags/BFS/"/>
     
     <category term="回溯" scheme="https://liano.top/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+    <category term="leetcode" scheme="https://liano.top/tags/leetcode/"/>
+    
+    <category term="c++" scheme="https://liano.top/tags/c/"/>
     
   </entry>
   

@@ -235,11 +235,11 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> leetcode </tag>
             
             <tag> c++ </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
@@ -266,15 +266,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> c++ </tag>
-            
             <tag> DFS </tag>
             
             <tag> BFS </tag>
             
             <tag> 回溯 </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> c++ </tag>
             
         </tags>
       

@@ -235,11 +235,11 @@
       
         <tags>
             
+            <tag> 分治法 </tag>
+            
             <tag> leetcode </tag>
             
             <tag> c++ </tag>
-            
-            <tag> 分治法 </tag>
             
         </tags>
       
@@ -297,15 +297,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
+            <tag> c++ </tag>
+            
             <tag> DFS </tag>
             
             <tag> BFS </tag>
             
             <tag> 回溯 </tag>
-            
-            <tag> leetcode </tag>
-            
-            <tag> c++ </tag>
             
         </tags>
       
@@ -456,9 +456,9 @@
       
         <tags>
             
-            <tag> 写博客 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 写博客 </tag>
             
             <tag> Typora </tag>
             

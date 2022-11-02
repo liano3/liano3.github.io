@@ -51,7 +51,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2022-11-01 20:47:59'
+  postUpdate: '2022-11-02 09:42:34'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/j
   }
 }
 window.addEventListener('load',()=> {preloader.endLoading()})
-setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script>window.addEventListener('load', () => {
   const changeContent = (content) => {
     if (content === '') return content
 
@@ -189,11 +189,37 @@ setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pj
     return content
   }
 
-  const getIcon = (icon, mail) => {
-    if (icon) return icon
-    let defaultIcon = '?d=monsterid'
-    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
-    return iconUrl
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.liano.top/',
+        region: 'ap-shanghai',
+        pageSize: 3,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 6/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
   }
 
   const generateHtml = array => {
@@ -207,7 +233,7 @@ setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pj
           const name = 'data-lazy-src'
           result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
         }
-
+        
         result += `<div class='content'>
         <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
         <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
@@ -223,41 +249,9 @@ setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pj
     window.pjax && window.pjax.refresh($dom)
   }
 
-  const getComment = () => {
-    const serverURL = 'https://hzzf3a8m.lc-cn-n1-shared.com'
-
-    var settings = {
-      "method": "GET",
-      "headers": {
-        "X-LC-Id": 'hzzf3A8MfsxcIYENC6Ym1m9t-gzGzoHsz',
-        "X-LC-Key": 'nrDoIzBClhZHKye74CxPO1fL',
-        "Content-Type": "application/json"
-      },
-    }
-
-    fetch(`${serverURL}/1.1/classes/Comment?limit=3&order=-createdAt`,settings)
-      .then(response => response.json())
-      .then(data => {
-        const valineArray = data.results.map(function (e) {
-          return {
-            'avatar': getIcon(e.QQAvatar, e.mail),
-            'content': changeContent(e.comment),
-            'nick': e.nick,
-            'url': e.url + '#' + e.objectId,
-            'date': e.updatedAt,
-          }
-        })
-        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 6/(60*24))
-        generateHtml(valineArray)
-      }).catch(e => {
-        const $dom = document.querySelector('#card-newest-comments .aside-list')
-        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
-      }) 
-  }
-
   const newestCommentInit = () => {
     if (document.querySelector('#card-newest-comments .aside-list')) {
-      const data = saveToLocal.get('valine-newest-comments')
+      const data = saveToLocal.get('twikoo-newest-comments')
       if (data) {
         generateHtml(JSON.parse(data))
       } else {

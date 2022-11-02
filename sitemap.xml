@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liano.top/messageboard/index.html</loc>
+    
+    <lastmod>2022-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://liano.top/posts/ffa9ec64/</loc>
     
     <lastmod>2022-11-01</lastmod>
@@ -75,15 +84,6 @@
   
   <url>
     <loc>https://liano.top/tags/index.html</loc>
-    
-    <lastmod>2022-09-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://liano.top/messageboard/index.html</loc>
     
     <lastmod>2022-09-05</lastmod>
     
@@ -397,6 +397,13 @@
   </url>
   
   <url>
+    <loc>https://liano.top/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://liano.top/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/</loc>
     <lastmod>2022-11-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -405,13 +412,6 @@
   
   <url>
     <loc>https://liano.top/tags/KMP%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-11-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://liano.top/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -525,6 +525,13 @@
   </url>
   
   <url>
+    <loc>https://liano.top/categories/%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2022-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://liano.top/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/typora/</loc>
     <lastmod>2022-11-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -575,13 +582,6 @@
   
   <url>
     <loc>https://liano.top/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2022-11-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://liano.top/categories/%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2022-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

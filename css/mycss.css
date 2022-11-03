@@ -1,44 +1,11 @@
 /*页面背景*/
 #web_bg {
-    background-image: linear-gradient(to left, #b0e0e6 0%, #f1f1d7 100%);
+    background-image: linear-gradient(to left, #beeee3 0%, #f1f1d7 100%);
 }
 
 /* 行间距 */
 #article-container {
     line-height: 150%;
-}
-
-/* 滚动条 */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: rgba(73, 177, 245, 0.2);
-    border-radius: 2em;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #49b1f5;
-    background-image: -webkit-linear-gradient(45deg,
-            rgba(255, 255, 255, 0.4) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.4) 50%,
-            rgba(255, 255, 255, 0.4) 75%,
-            transparent 75%,
-            transparent);
-    border-radius: 2em;
-}
-
-::-webkit-scrollbar-corner {
-    background-color: transparent;
-}
-
-::-moz-selection {
-    color: #fff;
-    background-color: #49b1f5;
 }
 
 /* 页脚footer
@@ -70,34 +37,38 @@
 }
 
 #aside-content>.card-widget:first-child {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
 }
 
 #aside-content .card-widget {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
 }
 
+#layout_post>#post {
+    background: rgba(255, 255, 255, 0.7);
+}
+
 .layout>div:first-child:not(.recent-posts) {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
 }
 
 #recent-posts>.recent-post-item {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
 }
 
 /*标题栏*/
 #page-header.nav-visible #nav {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(50px);
 }
 
 /*搜索框美化*/
 .search-dialog {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 0px;
 }
@@ -108,7 +79,7 @@
 
 /*手机端毛玻璃优化*/
 #sidebar #sidebar-menus.open {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
 }
 

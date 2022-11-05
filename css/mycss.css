@@ -3,9 +3,9 @@
     background-image: linear-gradient(to left, #beeee3 0%, #f1f1d7 100%);
 }
 
-/* 行间距 */
-#article-container {
-    line-height: 150%;
+/* 解决行内公式导致的间距问题 */
+mjx-container[jax="CHTML"] {
+    line-height: 160% !important;
 }
 
 /* 页脚footer

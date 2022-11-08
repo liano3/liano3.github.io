@@ -33,7 +33,7 @@ mjx-container[display],
 }
 
 /*所有页面实现毛玻璃特效*/
-#aside-content {
+/* #aside-content {
     background: rgba(255, 255, 255, 0);
 }
 
@@ -45,7 +45,7 @@ mjx-container[display],
 #aside-content .card-widget {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
-}
+} */
 
 #layout_post>#post {
     background: rgba(255, 255, 255, 0.7);
